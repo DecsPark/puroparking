@@ -16,10 +16,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from apps.usuario import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    path('facturacion/', auth_views.LoginView.as_view(template_name='registration/facturacion.html'),
+    name='facturacion'), 
+    
 ]
+
+
 
 

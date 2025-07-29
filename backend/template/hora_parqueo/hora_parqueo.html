@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Seleccion de lugar</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #c1cfff, lch(80.91% 30.39 286.8));
+      text-align: center;
+      padding: 30px;
+    }
+
+    h1 {
+      color: #950aa1;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #555;
+      font-size: 1.1em;
+    }
+
+    .parqueadero {
+      display: grid;
+      grid-template-columns: repeat(5, 110px);
+      grid-gap: 15px;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .espacio {
+      width: 100px;
+      height: 60px;
+      background-color: #90ee90;
+      border: 2px solid #2ecc71;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      color: #6592ce;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0);
+      transition: all 0.3s ease;
+      opacity: 0;
+      animation: aparecer 0.5s ease forwards;
+    }
+
+    .espacio:hover {
+      transform: scale(1.05);
+      background-color: #56cc56;
+    }
+
+    .ocupado {
+      background-color: #ad2d1f;
+      border-color: #c0392b;
+      color: white;
+      cursor: not-allowed;
+    }
+
+    .ocupado:hover {
+      transform: scale(1);
+    }
+
+    .seleccionado {
+      background-color: #2b83f7;
+      border-color: #1e6baa;
+    }
+
+    @keyframes aparecer {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Selecciona tu lugar</h1>
+  <p>Selecciona un espacio para parquear tu vehículo</p>
+
+  <div class="parqueadero" id="parqueadero">
+  </div>
+
+  <script>
+    const parqueadero = document.getElementById('parqueadero');
+    const totalEspacios = 20;
+
+    for (let i = 1; i <= totalEspacios; i++) {
+      const espacio = document.createElement('div');
+      espacio.classList.add('espacio');
+      espacio.textContent = `L${i}`;
+      espacio.style.animationDelay = `${i * 0.05}s`;
+
+      espacio.addEventListener('click', () => {
+        if (espacio.classList.contains('ocupado')) return;
+
+        document.querySelectorAll('.espacio.seleccionado').forEach(e => {
+          e.classList.remove('seleccionado');
+        });
+
+        espacio.classList.toggle('seleccionado');
+      });
+
+      parqueadero.appendChild(espacio);
+    }
+
+    const ocupados = [3, 6, 9, 13, 17];
+    ocupados.forEach(num => {
+      const espacio = parqueadero.children[num - 1];
+      if (espacio) {
+        espacio.classList.add('ocupado');
+        espacio.textContent = `L${num}`;
+      }
+    });
+  </script>
+<p>
+<p>
+    <button style="background-color: cornflowerblue;" onclick="alert('!Felicidades¡ tienes tu espacio en nuestro parqueadero')">Elegir espacio</button>
+</p>
+</p>
+
+</body>
+
+</html>
