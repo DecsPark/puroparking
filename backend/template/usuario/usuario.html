@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>usuario</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f2f2f2; margin: 0; padding: 20px; }
+    .card { background: #fff; padding: 20px; max-width: 400px; margin: auto; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    h1, h3 { text-align: center; }
+    input, button { width: 100%; padding: 10px; margin: 10px 0; font-size: 16px; }
+    ul { list-style: none; padding: 0; }
+    li { background: #e0e0e0; padding: 10px; margin: 5px 0; border-radius: 5px; text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>PuroParking</h1>
+    <input type="text" id="placa" placeholder="Ingresa la placa del vehículo">
+    <button onclick="registrar()">Registrar Entrada</button>
+    <button onclick="salida()">Registrar Salida</button>
+    <h3>Vehículos en el parqueadero:</h3>
+    <ul id="lista"></ul>
+  </div>
+
+  <script>
+    const lista = document.getElementById('lista');
+    const placaInput = document.getElementById('placa');
+    let vehiculos = [];
+
+    function registrar() {
+      const placa = placaInput.value.trim().toUpperCase();
+      if (!placa) {
+        alert('Por favor ingresa una placa.');
+        return;
+      }
+      if (!vehiculos.includes(placa)) {
+        vehiculos.push(placa);
+        actualizarLista();
+      } else {
+        alert('Este vehículo ya está registrado.');
+      }
+      placaInput.value = '';
+    }
+
+    function salida() {
+      const placa = placaInput.value.trim().toUpperCase();
+      if (!placa) {
+        alert('Por favor ingresa una placa.');
+        return;
+      }
+      const index = vehiculos.indexOf(placa);
+      if (index !== -1) {
+        vehiculos.splice(index, 1);
+        actualizarLista();
+      } else {
+        alert('Este vehículo no está en el parqueadero.');
+      }
+      placaInput.value = '';
+    }
+
+    function actualizarLista() {
+      lista.innerHTML = '';
+      vehiculos.forEach(placa => {
+        const li = document.createElement('li');
+        li.textContent = placa;
+        lista.appendChild(li);
+      });
+    }
+  </script>
+</body>
+</html>

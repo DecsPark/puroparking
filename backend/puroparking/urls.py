@@ -16,14 +16,22 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from apps.usuario import *
+from apps.usuario.views import *
+from apps.facturacion.views import *
+from apps.hora_parqueo.views import *
+from apps.rol.views import *
+from apps.vehiculo.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
-    path('facturacion/', auth_views.LoginView.as_view(template_name='registration/facturacion.html'),
-    name='facturacion'), 
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('facturacion/', facturacionViewset.as_view(template_name='facturacion/facturacion.html')),
+    path('hora_parqueo/', hora_parqueoViewset.as_view(template_name='hora_parqueo/hora_parqueo.html')),
+    path('rol/', rolViewset.as_view(template_name='rol/rol.html')),
+    path('vehiculo/', vehiculoViewset.as_view(template_name='vehiculo/vehiculo.html')),
+    path('usuario/', usuarioViewset.as_view(template_name='usuario/usuario.html')),
     
+
 ]
 
 

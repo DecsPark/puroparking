@@ -8,7 +8,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 
 from .serializers import *
 
-class FacturacionViewset(viewsets.ModelViewSet):
+class hora_parqueoViewset(viewsets.ModelViewSet):
 
     queryset = hora_parqueo.objects.all()
     serializer_class = hora_parqueoSerializer

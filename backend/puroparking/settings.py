@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'apps.facturacion',
     'apps.hora_parqueo',
     'apps.rol',
-    'apps.servicio',
     'apps.usuario',
     'apps.vehiculo',
 ]
@@ -72,7 +71,7 @@ ROOT_URLCONF = 'puroparking.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR/ 'templates'],
+        'DIRS': [BASE_DIR/ 'template'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
