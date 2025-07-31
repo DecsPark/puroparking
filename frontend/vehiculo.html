@@ -1,25 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de tu vehiculo</title>
+    <title>Vehículo</title>
 </head>
 
 <body>
     <center>
-        <h1>Regristra tu vehiculo</h1>
+        <h1>Registra tu vehículo</h1>
 
+        <label for="placa">Placa de tu vehículo</label>
         <br>
-        <br>
+        <input type="text" id="placa" placeholder="Ingrese su placa">
+        <br><br>
+        <button onclick="registrarPlaca()">Registrar</button>
 
-        <body>placa de tu vehiculo</body>
-        <br>
-        <input type="placa" class="from-control" id="placa" placeholder="ingrese su placa">
-        <br><br><br><br>
-
+        <p id="mensaje" style="color: rgb(0, 0, 0); font-weight: bold;"></p>
     </center>
+
+    <script>
+        function registrarPlaca() {
+            const placa = document.getElementById("placa").value.trim();
+
+            if (placa === "") {
+                document.getElementById("mensaje").style.color = "red";
+                document.getElementById("mensaje").innerText = "Por favor ingresa una placa válida.";
+            } else {
+                document.getElementById("mensaje").style.color = "green";
+                document.getElementById("mensaje").innerText = `Placa registrada: ${placa}`;
+                document.getElementById("placa").value = "";
+            }
+        }
+    </script>
 </body>
 
 </html>
