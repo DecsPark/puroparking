@@ -20,7 +20,7 @@ from apps.usuario.views import *
 from apps.facturacion.views import *
 from apps.hora_parqueo.views import *
 from apps.rol.views import *
-from apps.vehiculo.views import *
+from apps.vehiculo.views import * 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
