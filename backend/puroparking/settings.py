@@ -67,7 +67,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'puroparking.urls'
-
+ 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
