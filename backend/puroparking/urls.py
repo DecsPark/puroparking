@@ -31,5 +31,4 @@ urlpatterns = [
     path('vehiculo/', vehiculoViewset.as_view(template_name='vehiculo/vehiculo.html')),
     path('usuario/', usuarioViewset.as_view(template_name='usuario/usuario.html')),
     
-    
 ]
